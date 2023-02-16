@@ -15,3 +15,7 @@ An ELT pipeline related to water quality in California using data from the USGS 
 ### <ins> Data Source </ins>
 
 [USGS Middle River Location Monitoring](https://waterdata.usgs.gov/monitoring-location/11312676/)
+
+### <ins> How to Deploy </ins>
+
+### <ins> How to Monitor </ins>
