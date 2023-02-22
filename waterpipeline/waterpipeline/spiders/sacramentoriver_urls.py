@@ -1,5 +1,16 @@
-sr_nitrates = 'https://waterservices.usgs.gov/nwis/iv/?sites=11447890&parameterCd=99133&startDT=2023-02-09T13:26:39.886-08:00&endDT=2023-02-16T13:26:39.886-08:00&siteStatus=all&format=rdb'
+current_time = datetime.datetime.now().isoformat()
 
-sr_ph = 'https://waterservices.usgs.gov/nwis/iv/?sites=11447890&parameterCd=00400&startDT=2023-02-09T13:25:01.674-08:00&endDT=2023-02-16T13:25:01.674-08:00&siteStatus=all&format=rdb'
+week_ago = datetime.datetime.now() - datetime.timedelta(days=7)
+week_ago_iso = week_ago.isoformat()
 
-sr_salinity = 'https://waterservices.usgs.gov/nwis/iv/?sites=11447890&parameterCd=00480&startDT=2023-02-09T13:33:20.613-08:00&endDT=2023-02-16T13:33:20.613-08:00&siteStatus=all&format=rdb'
+#print("Current time (ISO 8601 format):", current_time)
+#print("One week ago (ISO 8601 format):", week_ago)
+#print("One week ago:", week_ago_iso)
+
+
+
+sr_nitrates = f'https://waterservices.usgs.gov/nwis/iv/?sites=11447890&parameterCd=99133&startDT={week_ago_iso}&endDT={current_time}&siteStatus=all&format=rdb'
+
+sr_ph = f'https://waterservices.usgs.gov/nwis/iv/?sites=11447890&parameterCd=00400&startDT={week_ago_iso}&endDT={current_time}&siteStatus=all&format=rdb'
+
+sr_salinity = f'https://waterservices.usgs.gov/nwis/iv/?sites=11447890&parameterCd=00480&startDT={week_ago_iso}&endDT={current_time}&siteStatus=all&format=rdb'
