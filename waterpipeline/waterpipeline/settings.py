@@ -12,6 +12,18 @@ BOT_NAME = "waterpipeline"
 SPIDER_MODULES = ["waterpipeline.spiders"]
 NEWSPIDER_MODULE = "waterpipeline.spiders"
 
+FEEDS = {
+    "s3://water-pipeline/middle-river/": {
+        "format": "tsv",
+    },
+    "s3://water-pipeline/sacramento-river/": {
+        "format": "tsv"
+    }
+}
+
+AWS_ACCESS_KEY_ID = 'AKIAWU53XCWTQIXV2IB3'
+
+AWS_SECRET_ACCESS_KEY = 'fJsrcFeh4RAMU/f8lH8YH1qN/2MYYO1p8sQb0HQ5'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "waterpipeline (+http://www.yourdomain.com)"
