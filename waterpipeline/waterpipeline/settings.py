@@ -7,6 +7,8 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+from config import * 
+
 BOT_NAME = "waterpipeline"
 
 SPIDER_MODULES = ["waterpipeline.spiders"]
@@ -21,9 +23,9 @@ FEEDS = {
     }
 }
 
-AWS_ACCESS_KEY_ID = 'AKIAWU53XCWTQIXV2IB3'
+AWS_ACCESS_KEY_ID = aws_access_key
 
-AWS_SECRET_ACCESS_KEY = 'fJsrcFeh4RAMU/f8lH8YH1qN/2MYYO1p8sQb0HQ5'
+AWS_SECRET_ACCESS_KEY = aws_secret_key
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "waterpipeline (+http://www.yourdomain.com)"
