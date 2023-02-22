@@ -3,18 +3,6 @@ from datetime import date, timedelta
 import pandas as pd
 
 import scrapy
-import datetime
-
-current_time = datetime.datetime.now().isoformat()
-
-week_ago = datetime.datetime.now() - datetime.timedelta(days=7)
-week_ago_iso = week_ago.isoformat()
-
-mr_nitrates = f'https://waterservices.usgs.gov/nwis/iv/?sites=11312676&parameterCd=99133&startDT={week_ago_iso}&endDT={current_time}&siteStatus=all&format=rdb'
-
-mr_ph = f'https://waterservices.usgs.gov/nwis/iv/?sites=11312676&parameterCd=00400&startDT={week_ago_iso}&endDT={current_time}&siteStatus=all&format=rdb'
-
-mr_salinity = f'https://waterservices.usgs.gov/nwis/iv/?sites=11312676&parameterCd=00480&startDT={week_ago_iso}&endDT={current_time}&siteStatus=all&format=rdb'
 
 class WaterSpider(scrapy.Spider):
     name = "middleriver"
