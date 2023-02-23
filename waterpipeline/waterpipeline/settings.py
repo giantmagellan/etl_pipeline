@@ -7,25 +7,37 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-from config import * 
+import sys
+sys.path.append('../../')
+from config.config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 BOT_NAME = "waterpipeline"
 
 SPIDER_MODULES = ["waterpipeline.spiders"]
 NEWSPIDER_MODULE = "waterpipeline.spiders"
 
+AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+
 FEEDS = {
     "s3://water-pipeline/middle-river/": {
         "format": "tsv",
     },
-    "s3://water-pipeline/sacramento-river/": {
-        "format": "tsv"
-    }
+    # "s3://water-pipeline/sacramento-river/": {
+    #     "format": "tsv"
+    # }
 }
+ITEM_PIPELINES = {'scrapy.pipelines.images.ImagesPipeline': 1}
+ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1}
+IMAGES_STORE = {
+    "s3://water-pipeline/middle-river/": {
+        "format": "tsv",
+    }}
+IMAGES_STORE_S3_ACL = 'private'
 
-AWS_ACCESS_KEY_ID = aws_access_key
-
-AWS_SECRET_ACCESS_KEY = aws_secret_key
+# ITEM_PIPELINE = {
+# 'scrapy.pipelines.files.S3FilesStore': 1
+# }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "waterpipeline (+http://www.yourdomain.com)"

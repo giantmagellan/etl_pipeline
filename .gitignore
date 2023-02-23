@@ -1,1 +1,3 @@
-waterpipeline/waterpipeline/config.py
+
+waterpipeline/config/config.py
+waterpipeline/aws/config
