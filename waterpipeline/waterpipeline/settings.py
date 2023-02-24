@@ -7,32 +7,39 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+''' Config File Method '''
 import sys
 sys.path.append('../../')
 from config.config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+
+''' DOTENV Method '''
+# import os
+# from os.path import join, dirname
+# from dotenv import load_dotenv
 
 BOT_NAME = "waterpipeline"
 
 SPIDER_MODULES = ["waterpipeline.spiders"]
 NEWSPIDER_MODULE = "waterpipeline.spiders"
 
+# dotenv_path = join(dirname(__file__), '.env')
+# load_dotenv(dotenv_path)
+
+# AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+
 AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
 
-FEEDS = {
-    "s3://water-pipeline/middle-river/": {
-        "format": "tsv",
-    },
-    # "s3://water-pipeline/sacramento-river/": {
-    #     "format": "tsv"
-    # }
-}
+FEED_URI = 's3://water-pipeline/%(name)s/%(time)s.tsv'
+FEED_FORMAT = 'tsv'
+
 ITEM_PIPELINES = {'scrapy.pipelines.images.ImagesPipeline': 1}
 ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1}
-IMAGES_STORE = {
-    "s3://water-pipeline/middle-river/": {
-        "format": "tsv",
-    }}
+# IMAGES_STORE = {
+#     "s3://water-pipeline/middle-river/": {
+#         "format": "tsv",
+#     }}
 IMAGES_STORE_S3_ACL = 'private'
 
 # ITEM_PIPELINE = {

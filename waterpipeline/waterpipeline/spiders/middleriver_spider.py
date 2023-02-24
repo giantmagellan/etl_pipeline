@@ -24,8 +24,9 @@ class WaterSpider(scrapy.Spider):
 
     def parse(self, response):
         page = response.url.split("parameterCd=")[-1].split("&")[0]
-        filename = f'waterpipeline/data_samples/middleriver-{page}.tsv'
+        filename = f'waterpipeline/data_samples/middleriver-{page}.html'
         # csv_table = pd.read_table(filename, sep="\t").to_csv(f'middleriver-{page}.csv', index=False)
         Path(filename).write_bytes(response.body)
         self.log(f'Saved file {filename}')
+        # csv_table.extract()
         
