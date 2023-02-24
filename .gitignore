@@ -1,3 +1,4 @@
 
 waterpipeline/config/config.py
 waterpipeline/aws/config
+.env
