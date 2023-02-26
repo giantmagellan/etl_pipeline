@@ -28,7 +28,10 @@ class WaterSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        page = response.url.split("&")[1].split("=")[1]
-        filename = f'sacramentoriver-{page}.html'
-        Path(filename).write_bytes(response.body)
-        self.log(f'Saved file {filename}')
+        page = response.url.split("parameterCd=")[-1].split("&")[0]
+        filename = f'waterpipeline/data_samples/ryerisland-{page}.csv'
+        data = response.body.decode("utf-8")  
+        csv = pd.read_csv(io.StringIO(data), sep="\t", skiprows=26)
+        csv = csv.to_csv(filename, index=False)
+        Path(csv).write_bytes(response.body)
+        self.log(f'Saved file {csv}')
