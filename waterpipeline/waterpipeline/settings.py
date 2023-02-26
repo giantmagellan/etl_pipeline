@@ -7,7 +7,7 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-''' Config File Method '''
+# ''' Config File Method '''
 import sys
 sys.path.append('../../')
 from config.config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
@@ -22,8 +22,26 @@ BOT_NAME = "waterpipeline"
 SPIDER_MODULES = ["waterpipeline.spiders"]
 NEWSPIDER_MODULE = "waterpipeline.spiders"
 
+FEED_URI = 's3://water-pipeline/%(name)s/%(time)s.csv'
+FEED_FORMAT = 'csv'
+
+# FEED_STORAGES_BASE = {
+#     '':'scrapy.extensions.feedexport.FilesFeedStorage',
+#     's3':'scrapy.extensions.feedexport.s3FeedStorage',
+# }
+
+# FEED_STORAGES = {
+#     '':'scrapy.extensions.feedexport.FilesFeedStorage',
+#     's3':'waterpipeline.extensions.s3.s3FeedStorage',
+# }
+
+# FEED_EXPORTERS = {
+#     'csv': 'scrapy.exporters.CsvItemExporter'
+# }
+
 # dotenv_path = join(dirname(__file__), '.env')
 # load_dotenv(dotenv_path)
+# load_dotenv()
 
 # AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 # AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
@@ -31,20 +49,21 @@ NEWSPIDER_MODULE = "waterpipeline.spiders"
 AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
 
-FEED_URI = 's3://water-pipeline/%(name)s/%(time)s.tsv'
-FEED_FORMAT = 'tsv'
 
-ITEM_PIPELINES = {'scrapy.pipelines.images.ImagesPipeline': 1}
-ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1}
+
+# ITEM_PIPELINES = {'scrapy.pipelines.images.ImagesPipeline': 1}
+# ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1}
 # IMAGES_STORE = {
 #     "s3://water-pipeline/middle-river/": {
 #         "format": "tsv",
 #     }}
-IMAGES_STORE_S3_ACL = 'private'
+# IMAGES_STORE_S3_ACL = 'private'
 
 # ITEM_PIPELINE = {
 # 'scrapy.pipelines.files.S3FilesStore': 1
 # }
+
+# FEED_EXPORT_BATCH_ITEM_COUNT = 3
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "waterpipeline (+http://www.yourdomain.com)"
