@@ -14,8 +14,8 @@ class WaterSpider(scrapy.Spider):
 
         urls = [         
                 'https://waterservices.usgs.gov/nwis/iv/?sites=11312676&parameterCd={}&startDT={}&endDT={}&siteStatus=all&format=rdb'.format(param_codes[0], start_date, end_date),
-                'https://waterservices.usgs.gov/nwis/iv/?sites=11312676&parameterCd={}&startDT={}&endDT={}&siteStatus=all&format=rdb'.format(param_codes[1], start_date, end_date),
-                'https://waterservices.usgs.gov/nwis/iv/?sites=11312676&parameterCd={}&startDT={}&endDT={}&siteStatus=all&format=rdb'.format(param_codes[2], start_date, end_date)
+                # 'https://waterservices.usgs.gov/nwis/iv/?sites=11312676&parameterCd={}&startDT={}&endDT={}&siteStatus=all&format=rdb'.format(param_codes[1], start_date, end_date),
+                # 'https://waterservices.usgs.gov/nwis/iv/?sites=11312676&parameterCd={}&startDT={}&endDT={}&siteStatus=all&format=rdb'.format(param_codes[2], start_date, end_date)
 
         ]
 
@@ -24,9 +24,9 @@ class WaterSpider(scrapy.Spider):
 
     def parse(self, response):
         page = response.url.split("parameterCd=")[-1].split("&")[0]
-        filename = f'waterpipeline/data_samples/middleriver-{page}.html'
-        # csv_table = pd.read_table(filename, sep="\t").to_csv(f'middleriver-{page}.csv', index=False)
+        filename = f'waterpipeline/data_samples/middleriver-{page}.tsv'
+        # csv = pd.read_table(filename, sep="\t", skiprows=26)
+        # csv = csv.to_csv(f'waterpipeline/data_samples/middleriver-{page}.csv', index=False)
         Path(filename).write_bytes(response.body)
-        self.log(f'Saved file {filename}')
-        # csv_table.extract()
+        # self.log(f'Saved file {filename}')
         
