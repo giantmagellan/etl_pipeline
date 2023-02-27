@@ -11,13 +11,10 @@ class WaterSpider(scrapy.Spider):
         monitor_loc = "11447890"
         param_codes = ['99133', '00400', '00480']  # nitrates, pH, salinity
         end_date = date.today()
-        week_ago = end_date - timedelta(days=7)  # obtain data for the past 7 days
+        #week_ago = end_date - timedelta(days=7)  # obtain data for the past 7 days
         start_date = end_date - timedelta(days=1) # obtain data from the past day
-
-        if week_ago == end_date:
-            urls = ['{}{}&parameterCd={}&startDT={}&endDT={}{}'.format(url_init, monitor_loc, code, week_ago, end_date, url_end) for code in param_codes]
-        else:
-            urls = ['{}{}&parameterCd={}&startDT={}&endDT={}{}'.format(url_init, monitor_loc, code, start_date, end_date, url_end) for code in param_codes]
+        
+        urls = ['{}{}&parameterCd={}&startDT={}&endDT={}{}'.format(url_init, monitor_loc, code, start_date, end_date, url_end) for code in param_codes]
 
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
@@ -40,13 +37,10 @@ class WaterSpider(scrapy.Spider):
         monitor_loc = "11455385"
         param_codes = ['99133', '00400', '00480']  # nitrates, pH, salinity
         end_date = date.today()
-        week_ago = end_date - timedelta(days=7)  # obtain data for the past 7 days
+        #week_ago = end_date - timedelta(days=7)  # obtain data for the past 7 days
         start_date = end_date - timedelta(days=1) # obtain data from the past day
-
-        if week_ago == end_date:
-            urls = ['{}{}&parameterCd={}&startDT={}&endDT={}{}'.format(url_init, monitor_loc, code, week_ago, end_date, url_end) for code in param_codes]
-        else:
-            urls = ['{}{}&parameterCd={}&startDT={}&endDT={}{}'.format(url_init, monitor_loc, code, start_date, end_date, url_end) for code in param_codes]
+        
+        urls = ['{}{}&parameterCd={}&startDT={}&endDT={}{}'.format(url_init, monitor_loc, code, start_date, end_date, url_end) for code in param_codes]
 
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
