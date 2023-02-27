@@ -8,9 +8,9 @@
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 # ''' Config File Method '''
-import sys
-sys.path.append('../../')
-from config.config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+# import sys
+# sys.path.append('../../')
+# from .config.config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 ''' DOTENV Method '''
 # import os
@@ -22,8 +22,8 @@ BOT_NAME = "waterpipeline"
 SPIDER_MODULES = ["waterpipeline.spiders"]
 NEWSPIDER_MODULE = "waterpipeline.spiders"
 
-FEED_URI = 's3://water-pipeline/%(name)s/%(time)s.csv'
-FEED_FORMAT = 'csv'
+# FEED_URI = 's3://water-pipeline/%(name)s/%(name)s_%(date)s.csv'
+# FEED_FORMAT = 'csv'
 
 # FEED_STORAGES_BASE = {
 #     '':'scrapy.extensions.feedexport.FilesFeedStorage',
@@ -35,9 +35,9 @@ FEED_FORMAT = 'csv'
 #     's3':'waterpipeline.extensions.s3.s3FeedStorage',
 # }
 
-# FEED_EXPORTERS = {
-#     'csv': 'scrapy.exporters.CsvItemExporter'
-# }
+# FEED_EXPORTERS_BASE = {
+#      'csv': 'scrapy.exporters.CsvItemExporter'
+#      }
 
 # dotenv_path = join(dirname(__file__), '.env')
 # load_dotenv(dotenv_path)
@@ -46,8 +46,10 @@ FEED_FORMAT = 'csv'
 # AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 # AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
-AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+# S3_BUCKET_NAME = 'water-pipeline'
+# AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+# S3_PREFIX = 'water-pipeline/'
 
 
 

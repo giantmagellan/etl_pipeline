@@ -1,4 +1,5 @@
 
 waterpipeline/config/config.py
 waterpipeline/aws/config
-waterpipeline/waterpipeline/.env
+waterpipeline/.env
+waterpipeline/waterpipeline/config/config.py
