@@ -20,7 +20,7 @@ class WaterSpider(scrapy.Spider):
         #week_ago = end_date - timedelta(days=7)  # obtain data for the past 7 days
         start_date = end_date - timedelta(days=1) # obtain data from the past day
 
-        urls = ['{}{}&parameterCd={}&startDT={}&endDT={}{}'.format(url_init, monitor_loc, code, week_ago, end_date, url_end) for code in param_codes]
+        urls = ['{}{}&parameterCd={}&startDT={}&endDT={}{}'.format(url_init, monitor_loc, code, start_date, end_date, url_end) for code in param_codes]
         
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
