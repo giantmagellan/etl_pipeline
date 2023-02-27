@@ -1,6 +1,6 @@
 use water_quality;
 
-# Datetime and nitrate level where collection @ Sacramento River results in nitrate levels less than 0.4 mg per liter
+# Nitrate levels where collection @ Sacramento River results in less than 0.4 mg per liter
 SELECT
 	collection_datetime,
     nitrate_level
@@ -14,9 +14,10 @@ SELECT
 FROM ryerisland
 WHERE pH_value >= 8;
 
-# Datetime and salinity levels @ Sacramento River during 11 o'clock hour
+# Salinity and nitrate levels @ Sacramento River during 11 o'clock hour
 SELECT
     collection_datetime,
-    salinity_level
+    salinity_level,
+    nitrate_level
 FROM sacriver
 WHERE collection_datetime LIKE '%11:%';
